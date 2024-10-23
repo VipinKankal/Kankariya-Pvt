@@ -8,6 +8,13 @@ import User_management from "./User_management/User_management";
 import Add_new_user from "./User_management/Add_new_user";
 import Edit_user from "./User_management/Edit_user";
 import LoginUser from "./Login/LoginUser";
+import Cashier from "./Forms/Cashier";
+import Accessories from "./Forms/Accessories";
+import Fainance from "./Forms/Fainance";
+import Account from "./Forms/Account";
+import Rto from "./Forms/Rto";
+import Pdi from "./Forms/Pdi";
+import Coating from "./Forms/Coating";
  
 function Navbar() {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,13 +48,13 @@ function Navbar() {
                         <li><NavLink to='/customer'><i className="fa fa-user orange_color"></i> <span>Customer</span></NavLink></li>
                         <li><NavLink to='/customer_list'><i className="fa fa-users blue2_color"></i> <span>Customer List</span></NavLink></li>
                         <li><NavLink to="/user-management"><i className="fa fa-users orange_color"></i><span>User Management</span></NavLink></li>
-                        <li><NavLink to="/acm-list"><i className="fa fa-briefcase purple_color2"></i><span>Cashier</span></NavLink></li>
-                        <li><NavLink to="/acm-list"><i className="fa fa-wrench green_color"></i><span>Accessories</span></NavLink></li>
-                        <li><NavLink to="/acm-list"><i className="fa fa-star blue2_color"></i><span>FM</span></NavLink></li>
+                        <li><NavLink to="/cashier-list"><i className="fa fa-briefcase purple_color2"></i><span>Cashier</span></NavLink></li>
+                        <li><NavLink to="/accessories-list"><i className="fa fa-wrench green_color"></i><span>Accessories</span></NavLink></li>
+                        <li><NavLink to="/fainance-list"><i className="fa fa-star blue2_color"></i><span>FM</span></NavLink></li>
                         <li><NavLink to="/acm-list"><i className="fa fa-suitcase purple_color2"></i><span>ACM</span></NavLink></li>
-                        <li><NavLink to="/acm-list"><i className="fa fa-line-chart red_color"></i><span>RTO</span></NavLink></li>
-                        <li><NavLink to="/acm-list"><i className="fa fa-cubes purple_color2"></i><span>PDI</span></NavLink></li>
-                        <li><NavLink to="/acm-list"><i className="fa fa-pie-chart red_color"></i><span>Coating</span></NavLink></li>
+                        <li><NavLink to="/rto-list"><i className="fa fa-line-chart red_color"></i><span>RTO</span></NavLink></li>
+                        <li><NavLink to="/pdi-list"><i className="fa fa-cubes purple_color2"></i><span>PDI</span></NavLink></li>
+                        <li><NavLink to="/coating-list"><i className="fa fa-pie-chart red_color"></i><span>Coating</span></NavLink></li>
                      </ul>
                   </div>
                </nav>
@@ -80,16 +87,18 @@ function Navbar() {
                   </div>
                   <Routes>
                      <Route path="/" element={<Dashboard />} />
-                     
                      <Route path="/add-user" element={<Add_new_user />} />
                      <Route path="/edit-user" element={<Edit_user />} />
                      <Route path="/customer" element={<Customer />} />
                      <Route path="/customer_list" element={<Customer_list />} />
                      <Route path="/user-management"  element={isLoggedIn ? <User_management /> : <LoginUser onLogin={setIsLoggedIn} />} />
-
-
-
-                     
+                     <Route path="/cashier-list" element={<Cashier/>}/>
+                     <Route path="/accessories-list" element={<Accessories/>}/>
+                     <Route path="/fainance-list" element={<Fainance/>}/>
+                     <Route path="/acm-list" element={<Account/>}/>
+                     <Route path="/rto-list" element={<Rto/>}/>
+                     <Route path="/pdi-list" element={<Pdi/>}/>
+                     <Route path="/coating-list" element={<Coating/>}/>
                   </Routes>
                </div>
             </div>
