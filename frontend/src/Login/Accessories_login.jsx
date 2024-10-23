@@ -38,7 +38,7 @@ function Accessories_login(){
                                     </div>
                                     <div className="field">
                                         <label className="label_field">Password</label>
-                                        <input type="password"required />
+                                        <input type="password"required/>
                                     </div>
                                     { <p style={{ color: 'red' }}></p>}
                                     <div className="field">

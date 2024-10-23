@@ -3,6 +3,7 @@ import { NavLink, BrowserRouter as Router, Routes, Route } from "react-router-do
 import './src_css/style.css';
 import Customer_list from "./Customer/Customer_list";
 import Dashboard from "./Dashboard";
+import Status from "./Status";
 import Customer from "./Customer/Customer";
 import User_management from "./User_management/User_management";
 import Add_new_user from "./User_management/Add_new_user";
@@ -53,6 +54,7 @@ function Navbar() {
                      <h4>General</h4>
                      <ul className="list-unstyled components">
                         <li><NavLink to='/'><i className="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></NavLink></li>
+                        <li><NavLink to='/status'><i className="fa-solid fa-person-circle-check"></i> <span>Status</span></NavLink></li>
                         <li><NavLink to='/customer'><i className="fa fa-user orange_color"></i> <span>Customer</span></NavLink></li>
                         <li><NavLink to='/customer_list'><i className="fa fa-users blue2_color"></i> <span>Customer List</span></NavLink></li>
                         <li><NavLink to="/user-management"><i className="fa fa-users orange_color"></i><span>User Management</span></NavLink></li>
@@ -96,6 +98,7 @@ function Navbar() {
                   </div>
                   <Routes>
                      <Route path="/" element={<Dashboard />} />
+                     <Route path="/status" element={<Status />} />
                      <Route path="/add-user" element={<Add_new_user />} />
                      <Route path="/edit-user" element={<Edit_user />} />
                      <Route path="/customer" element={<Customer />} />
