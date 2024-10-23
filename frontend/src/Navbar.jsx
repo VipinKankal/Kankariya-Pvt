@@ -7,7 +7,6 @@ import Customer from "./Customer/Customer";
 import User_management from "./User_management/User_management";
 import Add_new_user from "./User_management/Add_new_user";
 import Edit_user from "./User_management/Edit_user";
-import LoginUser from "./Login/LoginUser";
 import Cashier from "./Forms/Cashier";
 import Accessories from "./Forms/Accessories";
 import Fainance from "./Forms/Fainance";
@@ -15,6 +14,15 @@ import Account from "./Forms/Account";
 import Rto from "./Forms/Rto";
 import Pdi from "./Forms/Pdi";
 import Coating from "./Forms/Coating";
+import LoginUser from "./Login/LoginUser";
+import Cashier_login from "./Login/Cashier_login";
+import Accessories_login from "./Login/Accessories_login";
+import Finance_login from "./Login/Finance_login";
+import Account_login from "./Login/Account_login";
+import Rto_login from "./Login/Rto_login";
+import Pdi_login from "./Login/Pdi_login";
+import Coating_login from "./Login/Coating_login";
+
  
 function Navbar() {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,6 +63,7 @@ function Navbar() {
                         <li><NavLink to="/rto-list"><i className="fa fa-line-chart red_color"></i><span>RTO</span></NavLink></li>
                         <li><NavLink to="/pdi-list"><i className="fa fa-cubes purple_color2"></i><span>PDI</span></NavLink></li>
                         <li><NavLink to="/coating-list"><i className="fa fa-pie-chart red_color"></i><span>Coating</span></NavLink></li>
+                        <li><NavLink to="/log-in"><i className="fa fa-pie-chart red_color"></i><span>Log In Page</span></NavLink></li>
                      </ul>
                   </div>
                </nav>
@@ -99,6 +108,7 @@ function Navbar() {
                      <Route path="/rto-list" element={<Rto/>}/>
                      <Route path="/pdi-list" element={<Pdi/>}/>
                      <Route path="/coating-list" element={<Coating/>}/>
+                     <Route path="/log-in" element={<Coating_login/>}/>
                   </Routes>
                </div>
             </div>
