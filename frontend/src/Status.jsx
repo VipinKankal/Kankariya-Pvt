@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaCheckCircle } from "react-icons/fa";
 
 function Status(){
     // Define state for toggling the status bar
@@ -55,16 +56,54 @@ function Status(){
                     </table>
                     {/* Conditionally render the status bar */}
                     {showStatus && (
-                        <div className="status-bar mt-5 p-3" style={{ border: '1px solid #ccc' }}>
-                            <h4>Status for Ram Sharma</h4>
-                            <p>Booking Confirmed. Delivery scheduled for 12th November 2024.</p>
-                            <div className="row">
-                                <div className="col-md-4"></div>
-                                <div className="col-md-4"></div>
-                                <div className="col-md-4"></div>
-                            </div>
-                        </div>
-                    )}
+                         <div className="status-bar mt-5 p-3" style={{ border: '1px solid #ccc' }}>
+                         <h4>Status for Ram Sharma</h4>
+                         <p>Booking Confirmed. Delivery scheduled for 12th November 2024.</p>
+                         <div className="container mt-4">
+                           <div className="row ">
+                             <div className="col-md-12">
+                               <div className="d-flex justify-content-between align-items-center">
+                                 {/* Step 1: Cashier */}
+                                 <div className="text-center">
+                                   <FaCheckCircle color="green" size={24} />
+                                   <h5>Cashier</h5>
+                                 </div>
+                                 {/* Step 2: Accessories */}
+                                 <div className="text-center">
+                                   <FaCheckCircle color="green" size={24} />
+                                   <h5>Accessories</h5>
+                                 </div>
+                                 {/* Step 3: Fainance */}
+                                 <div className="text-center">
+                                   <FaCheckCircle color="#ccc" size={24} />
+                                   <h5>Fainance</h5>
+                                 </div>
+                                 {/* Step 4: Account */}
+                                 <div className="text-center">
+                                   <FaCheckCircle color="#ccc" size={24} />
+                                   <h5>Account</h5>
+                                 </div>
+                                 {/* Step 5: RTO */}
+                                 <div className="text-center">
+                                   <FaCheckCircle color="#ccc" size={24} />
+                                   <h5>RTO</h5>
+                                 </div>
+                                 {/* Step 6: PDI */}
+                                 <div className="text-center">
+                                   <FaCheckCircle color="#ccc" size={24} />
+                                   <h5>PDI</h5>
+                                 </div>
+                                 {/* Step 7: RTO */}
+                                 <div className="text-center">
+                                   <FaCheckCircle color="#ccc" size={24} />
+                                   <h5>Coating</h5>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     )}
                 </div>
               </div>
             </div>
