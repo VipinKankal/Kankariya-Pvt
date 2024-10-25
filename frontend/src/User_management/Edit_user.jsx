@@ -6,31 +6,6 @@ import { NavLink } from "react-router-dom";
 
 
 function Edit_user(){
-     // Location
-     const [locationName, setLocationName] = useState('');
-     useEffect(() => {
-       if (navigator.geolocation) {
-         navigator.geolocation.getCurrentPosition(
-           (position) => {
-             const { latitude, longitude } = position.coords;
-             // Reverse Geocoding with Nominatim API
-             axios.get(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
-               .then((response) => {
-                 const address = response.data.display_name;
-                 setLocationName(address);
-               })
-               .catch((error) => {
-                 console.error('Error fetching location name:', error);
-               });
-             },
-           (error) => {
-             console.error('Error getting location:', error);
-           }
-         );
-       } else {
-         console.error('Geolocation is not supported by this browser.');
-       }
-     }, []);
     return(
         <>
         <div className="midde_cont">
@@ -44,10 +19,6 @@ function Edit_user(){
                                 </div>
                                 <div className="col-md-2 mt-1">
                                     <h2>Edit User</h2>
-                                </div>
-                                <div className="col-md-9 d-flex justify-content-end">
-                                    <i class="fas fa-location-dot" style={{position:'absolute',right:'200px',top:'50%',transform:'translateY(-50%)',fontsize:'18px'}}></i>
-                                    <input type="text" id="location" name="location" value={locationName} readOnly></input>
                                 </div>
                             </div>
                         </div>
@@ -72,8 +43,8 @@ function Edit_user(){
                                        <input type="text" name="l_name" class="form-control" required></input>
                                     </div>
                                     <div className="mt-4 col-md-4">
-                                       <label>Dealer Employee ID :</label>
-                                       <input type="text" name="d_employee_id" class="form-control" required></input>
+                                       <label>Employee ID :</label>
+                                       <input type="text" name="employee_id" class="form-control" required></input>
                                     </div>
                                     <div className="mt-4 col-md-4">
                                        <label>Mobile :</label>
@@ -84,33 +55,37 @@ function Edit_user(){
                                        <input type="email" name="email" class="form-control" required></input>
                                     </div>
                                     <div className="mt-4 col-md-4">
-                                       <label>Dealer Code :</label>
-                                       <input type="text" name="dealer_code" class="form-control" value="1908" required></input>
-                                    </div>
-                                    <div className="mt-4 col-md-4">
-                                       <label>Dealer Name :</label>
-                                       <input type="text" name="dealer_name" class="form-control" value="Choughule PVT.LTD" required></input>
-                                    </div>
-                                    <div className="mt-4 col-md-4">
-                                       <label>Dealer City :</label>
-                                       <input type="text" name="dealer_city" class="form-control" value="Pune" required></input>
+                                       <label>Employee City :</label>
+                                       <input type="text" name="employee_city" class="form-control" required></input>
                                     </div>
                                     <div className="mt-4 col-md-4">
                                        <label>Role :</label>
                                        <select type="text" name="model" class="form-control" required>
                                           <option>Select...</option>
+                                          <option>Accessories Manager</option>
+                                          <option>Account Manager</option>
+                                          <option>Cashier</option>
                                           <option>Finance Manager</option>
+                                          <option>PDI Manager</option>
                                           <option>RTO Manager</option>
-                                          <option>Insurance Manager</option>
+                                          <option>Coating Manager</option>
                                        </select>
                                     </div>
                                     <div className="mt-4 col-md-4">
                                        <label>Start Date:</label>
-                                       <input type="date" name="start_date" class="form-control" value="" required></input>
+                                       <input type="date" name="start_date" class="form-control"  required></input>
                                     </div>
                                     <div className="mt-4 col-md-4">
                                        <label>Last Working Date:</label>
-                                       <input type="date" name="last_w_date" class="form-control" value="Pune" required></input>
+                                       <input type="date" name="last_w_date" class="form-control"  required></input>
+                                    </div>
+                                    <div className="mt-4 col-md-4">
+                                       <label>Password:</label>
+                                       <input type="text" name="password" class="form-control" required></input>
+                                    </div>
+                                    <div className="mt-4 col-md-4">
+                                       <label>Confirm Password:</label>
+                                       <input type="text" name="confirm_password" class="form-control"required></input>
                                     </div>
                                     <div class="col-md-12 text-center mt-5">
                                         <div className="row">

@@ -45,9 +45,10 @@ function User_management(){
                             <table className="table table-info table-bordered table-striped table-hover">
                                 <thead>
                                 <tr>
+                                    <th>Sr.No</th>
                                     <th>Name</th>
                                     <th>Mobile</th>
-                                    <th>Dealer EmpId</th>
+                                    <th>Emp Id</th>
                                     <th>Email</th>
                                     <th>Roles</th>
                                     <th>Active</th>
@@ -58,11 +59,12 @@ function User_management(){
                                 </thead>
                                 <tbody>
                                 <tr>
+                                    <td>1</td>
                                     <td>Aashish Kumar Mishra</td>
                                     <td>9911223344</td>
                                     <td>782</td>
                                     <td>aashish@gmail.com</td>
-                                    <td>ACM,FM,TVM</td>
+                                    <td>Account Manager</td>
                                     <td className="text-success">Active</td>
                                     <td>20-09-2024</td>
                                     <td></td>
@@ -72,11 +74,12 @@ function User_management(){
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>2</td>
                                     <td>Ram Missal</td>
                                     <td>0987654321</td>
                                     <td>1111</td>
                                     <td>Ram@gmail.com</td>
-                                    <td>ACM,FM,TVM</td>
+                                    <td>PDI Manager</td>
                                     <td className="text-danger">Inactive</td>
                                     <td>20-09-2024</td>
                                     <td>11-11-2024</td>
@@ -86,11 +89,12 @@ function User_management(){
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>3</td>
                                     <td>Akshay Mishra</td>
                                     <td>0987654321</td>
                                     <td>2345</td>
                                     <td>akshay@gmail.com</td>
-                                    <td>ACM,FM,TVM</td>
+                                    <td>RTO Manager</td>
                                     <td className="text-success">Active</td>
                                     <td>20-09-2024</td>
                                     <td></td>
