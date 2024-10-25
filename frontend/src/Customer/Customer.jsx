@@ -262,6 +262,11 @@ function Customer() {
                                        <input type="radio" name="insurance" className="ml-2" value="yes"/>Yes
                                        <input type="radio" name="insurance" className="ml-2" value="no"/>No
                                  </div>
+                                 <div className="mt-4 col-md-4">
+                                       <label>Insurance 0 DEP:</label>
+                                       <input type="radio" name="insurance" className="ml-2" value="yes"/>Yes
+                                       <input type="radio" name="insurance" className="ml-2" value="no"/>No
+                                 </div>
                                  <div className="mt-5 col-md-12 text-center">
                                        <button type="submit" className="btn btn-secondary" style={{ backgroundColor: 'rgb(33, 65, 98)' }}>Save</button>
                                  </div>
