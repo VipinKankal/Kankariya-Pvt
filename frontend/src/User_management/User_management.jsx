@@ -39,7 +39,6 @@ function User_management(){
                              <input type="text" placeholder="Search..."style={{padding: '4px',fontSize: '13px',borderRadius: '4px',border: '1px solid #ccc', width: '100%',maxWidth: '300px'}}></input>
                            </div>
                            <div className=" d-flex justify-content-end mb-2">
-                               <NavLink onClick={() => handleShow()}><button className="btn text-white mr-2"style={{ backgroundColor: 'rgb(33, 65, 98)' }}><i class="fa-sharp fa-solid fa-envelope"></i> Dealership CEO Email</button></NavLink>
                                <NavLink to='/add-user'><button className="btn text-white"style={{ backgroundColor: 'rgb(33, 65, 98)' }}><i class="fa-solid fa-plus"></i> Add New User</button></NavLink>
                            </div>
                             <table className="table table-info table-bordered table-striped table-hover">

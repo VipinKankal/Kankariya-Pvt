@@ -289,7 +289,7 @@ function Customer() {
 {/* Bootstrap Modal */}
 {show && (
     <div className="modal fade show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-        <div className="modal-dialog" role="document" style={{ maxWidth: '500px', width: '600px', height: '500px' }}>
+        <div className="modal-dialog" role="document" style={{ maxWidth: '1000px', width: '900px', height: '600px' }}>
             <div className="modal-content" style={{ height: '100%' }}>
                 <div className="modal-header">
                     <h4 className="modal-title">Dealership CEO Email</h4>
@@ -299,12 +299,20 @@ function Customer() {
                 </div>
                 <div className="modal-body" style={{ overflowY: 'auto', maxHeight: 'calc(100% - 120px)' }}>
                   <form>
-      	            <p>Aadhar Card</p>
-                     <input type="file" className="form-control" required onChange={handleFileChange}></input>
-                     <p className="mt-2">Pan Card</p>
-                     <input type="file" className="form-control" required onChange={handleFileChange}></input>
-                     <p className="mt-2">Voter Card</p>
-                     <input type="file" className="form-control" required onChange={handleFileChange}></input>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <p>Aadhar Card</p>
+                            <input type="file" className="form-control" required onChange={handleFileChange}></input>
+                        </div>
+                        <div className="col-md-6">
+                            <p className="mt-2">Pan Card</p>
+                            <input type="file" className="form-control" required onChange={handleFileChange}></input>
+                        </div>
+                        <div className="col-md-6">
+                            <p className="mt-2">Voter Card</p>
+                            <input type="file" className="form-control" required onChange={handleFileChange}></input>
+                        </div>
+                    </div>
                   </form>
                 </div>
                 <div className="modal-footer">
