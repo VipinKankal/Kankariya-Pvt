@@ -1,92 +1,13 @@
-import React,{ useEffect, useState }from "react";
+import React, { useState } from "react";
 import '../src_css/style.css';
 import { NavLink } from "react-router-dom";
 
-function Customer() {
-   // Modal state
+
+function Update_customer(){
+     // Modal state
    const [show, setShow] = useState(false);
    const handleShow = () => setShow(true);
    const handleClose = () => setShow(false);
-
-   // State to hold customer data
-   const [customers, setCustomers] = useState([]);
-   
-   // State to hold finance document files
-   const [financeDocuments, setFinanceDocuments] = useState({
-       aadhar: null,
-       pan: null,
-       voterId: null,
-   });
-
-   // Function to handle file input changes
-   const handleFileChange = (event) => {
-       const { name, files } = event.target;
-       setFinanceDocuments((prevDocs) => ({
-           ...prevDocs,
-           [name]: files[0], // Store the first file
-       }));
-   };
-
-   // Function to fetch customer data from the backend
-   const fetchCustomers = async () => {
-       try {
-           const response = await fetch('http://localhost:5000/customers');
-           if (response.ok) {
-               const data = await response.json();
-               setCustomers(data);
-           } else {
-               console.error('Failed to fetch customers:', response.statusText);
-           }
-       } catch (error) {
-           console.error('Error fetching customers:', error);
-       }
-   };
-
-   // Fetch customers when the component mounts
-   useEffect(() => {
-       fetchCustomers();
-   }, []);
-
-   // Function to handle form submission
-   const handleSubmit = async (event) => {
-       event.preventDefault(); // Prevent the default form submission
-       const formData = new FormData(event.target); // Get the form data
-
-       // Convert FormData to a plain object
-       const customerData = Object.fromEntries(formData);
-       
-       // Add finance documents if finance is selected
-       if (customerData.finance === "yes") {
-           customerData.financedocuments = {
-               aadhar: financeDocuments.aadhar ? financeDocuments.aadhar.name : null,
-               pan: financeDocuments.pan ? financeDocuments.pan.name : null,
-               voterId: financeDocuments.voterId ? financeDocuments.voterId.name : null,
-           };
-       }
-
-       try {
-           const response = await fetch('http://localhost:5000/customers', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json',
-               },
-               body: JSON.stringify(customerData),
-           });
-
-           if (response.ok) {
-               const savedCustomer = await response.json();
-               setCustomers([...customers, savedCustomer]);
-               // Reset form and finance documents state
-               event.target.reset();
-               setFinanceDocuments({ aadhar: null, pan: null, voterId: null });
-           } else {
-               console.error('Failed to save customer data:', response.statusText);
-           }
-       } catch (error) {
-           console.error('Error:', error);
-       }
-   };
-
     return(
         <>
         <div className="midde_cont">
@@ -109,7 +30,7 @@ function Customer() {
                     <div className="col-md-12">
                         <div className="page_title">
                            <h4>Personal Information</h4>
-                           <form onSubmit={handleSubmit}>
+                           <form>
                               <div className="row">
                                  <div className="mt-2 col-md-4">
                                        <label>Name :</label>
@@ -222,7 +143,8 @@ function Customer() {
                                  </div>
                                  <div className="mt-2 col-md-4">
                                        <label>Finance :</label>
-                                       <input type="radio" name="finance" value="yes" className="ml-2" onClick={() => handleShow()}/>Yes                                       <input type="radio" name="finance" className="ml-2" value="no"/>No
+                                       <input type="radio" name="finance" value="yes" className="ml-2"onClick={() => handleShow()}/>Yes                                       
+                                       <input type="radio" name="finance" className="ml-2" value="no"/>No
                                  </div>
                                  <div className="mt-2 col-md-4">
                                        <label>Accessories :</label>
@@ -274,8 +196,15 @@ function Customer() {
                                        <input type="radio" name="insurance" className="ml-2" value="yes"/>Yes
                                        <input type="radio" name="insurance" className="ml-2" value="no"/>No
                                  </div>
-                                 <div className="mt-5 col-md-12 text-center">
-                                       <button type="submit" className="btn btn-secondary" style={{ backgroundColor: 'rgb(33, 65, 98)' }}>Save</button>
+                                 <div className="mt-5 col-md-12">
+                                    <div className="row">
+                                       <div className="col-md-6 d-flex justify-content-end">
+                                            <NavLink to='/customer_list'><button type="submit" className="btn btn-outline-secondary">Cancel</button></NavLink>
+                                       </div>
+                                       <div className="col-md-6">
+                                            <button type="submit" className="btn btn-secondary" style={{ backgroundColor: 'rgb(33, 65, 98)' }}>Save</button>
+                                       </div>
+                                    </div>   
                                  </div>
                               </div>
                            </form>
@@ -289,22 +218,33 @@ function Customer() {
 {/* Bootstrap Modal */}
 {show && (
     <div className="modal fade show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-        <div className="modal-dialog" role="document" style={{ maxWidth: '500px', width: '600px', height: '500px' }}>
+        <div className="modal-dialog" role="document" style={{ maxWidth: '1000px', width: '800px', height: '500px' }}>
             <div className="modal-content" style={{ height: '100%' }}>
                 <div className="modal-header">
-                    <h4 className="modal-title">Dealership CEO Email</h4>
+                    <h4 className="modal-title">Check Document And Update</h4>
                     <button type="button" className="close" onClick={handleClose}>
                         <span>&times;</span>
                     </button>
                 </div>
                 <div className="modal-body" style={{ overflowY: 'auto', maxHeight: 'calc(100% - 120px)' }}>
                   <form>
-      	            <p>Aadhar Card</p>
-                     <input type="file" className="form-control" required onChange={handleFileChange}></input>
-                     <p className="mt-2">Pan Card</p>
-                     <input type="file" className="form-control" required onChange={handleFileChange}></input>
-                     <p className="mt-2">Voter Card</p>
-                     <input type="file" className="form-control" required onChange={handleFileChange}></input>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <p>Aadhar Card</p>
+                            <input type="file" className="form-control"></input>
+                            <img src="" style={{height:'40px', width:'130px'}}/>
+                        </div>
+                        <div className="col-md-6">
+                            <p className="mt-2">Pan Card</p>
+                            <input type="file" className="form-control"></input>
+                            <img src="" style={{height:'40px', width:'130px'}}/>
+                        </div>
+                        <div className="col-md-6">
+                            <p className="mt-2">Voter Card</p>
+                            <input type="file" className="form-control"></input>
+                            <img src="" style={{height:'40px', width:'130px'}}/>
+                        </div>
+                    </div>
                   </form>
                 </div>
                 <div className="modal-footer">
@@ -318,9 +258,9 @@ function Customer() {
             </div>
         </div>
     </div>
-)}
+)}        
 
         </>
     )
 }
-export default Customer;
+export default Update_customer;

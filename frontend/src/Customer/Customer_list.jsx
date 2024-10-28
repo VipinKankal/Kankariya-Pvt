@@ -51,7 +51,7 @@ function Customer_list(){
                                     <td>Zxi</td>
                                     <td>White</td>
                                     <td>
-                                        <button className="btn btn-info mr-2">Edit</button>
+                                        <NavLink to='/update_customer'><button className="btn btn-info mr-2">Edit</button></NavLink>
                                         <button className="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>

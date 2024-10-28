@@ -5,6 +5,7 @@ import Customer_list from "./Customer/Customer_list";
 import Dashboard from "./Dashboard";
 import Status from "./Status";
 import Customer from "./Customer/Customer";
+import Update_customer from "./Customer/Update_customer";
 import User_management from "./User_management/User_management";
 import Add_new_user from "./User_management/Add_new_user";
 import Edit_user from "./User_management/Edit_user";
@@ -103,6 +104,7 @@ function Navbar() {
                      <Route path="/edit-user" element={<Edit_user />} />
                      <Route path="/customer" element={<Customer />} />
                      <Route path="/customer_list" element={<Customer_list />} />
+                     <Route path="/update_customer" element={<Update_customer />}/>
                      <Route path="/user-management"  element={isLoggedIn ? <User_management /> : <LoginUser onLogin={setIsLoggedIn} />} />
                      <Route path="/cashier-list" element={<Cashier/>}/>
                      <Route path="/accessories-list" element={<Accessories/>}/>
