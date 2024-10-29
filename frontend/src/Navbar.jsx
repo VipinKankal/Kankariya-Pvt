@@ -104,7 +104,7 @@ function Navbar() {
                      <Route path="/edit-user" element={<Edit_user />} />
                      <Route path="/customer" element={<Customer />} />
                      <Route path="/customer_list" element={<Customer_list />} />
-                     <Route path="/update_customer" element={<Update_customer />}/>
+                     <Route path="/update_customer/:id" element={<Update_customer />}/>
                      <Route path="/user-management"  element={isLoggedIn ? <User_management /> : <LoginUser onLogin={setIsLoggedIn} />} />
                      <Route path="/cashier-list" element={<Cashier/>}/>
                      <Route path="/accessories-list" element={<Accessories/>}/>
@@ -113,7 +113,7 @@ function Navbar() {
                      <Route path="/rto-list" element={<Rto/>}/>
                      <Route path="/pdi-list" element={<Pdi/>}/>
                      <Route path="/coating-list" element={<Coating/>}/>
-                     <Route path="/log-in" element={<Coating_login/>}/>
+                     <Route path="/log-in" element={<Coating_login/>}/> 
                   </Routes>
                </div>
             </div>
