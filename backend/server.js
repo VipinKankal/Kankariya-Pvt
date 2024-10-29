@@ -11,13 +11,13 @@ const PORT = 5000;
 // Enable CORS
 app.use(cors());
 app.use(express.json()); // Enable JSON body parsing
-
 // MySQL database connection using connection pooling
 const db = mysql.createPool({
   host: 'localhost',
   user: 'root', // Replace with your MySQL username
   password: '', // Replace with your MySQL password
   database: 'kankariya_database',
+  waitForConnections: true,
   connectionLimit:100
  
 });
@@ -122,13 +122,13 @@ app.post('/customers', upload.fields([
     name, email, mobile, address, date_birth, tentative_date, preferred_date, request_date,
     customer_type, model, variant, color, ex_showroom_price, booking_amount, rm_name, srm_name,
     exchange, finance, accessories, coating, auto_card, extended_warranty, registration_fees,
-    ccp, insurance ,rto_tax ,fast_tag
+    ccp, insurance
   } = req.body;
 
   // Validate required fields
   if (!name || !email || !mobile || !address || !date_birth || !tentative_date || !preferred_date || 
       !request_date || !customer_type || !model || !variant || !color || !ex_showroom_price || 
-      !booking_amount || !rm_name || !srm_name || !rto_tax || !fast_tag) {
+      !booking_amount || !rm_name || !srm_name) {
     return res.status(400).send('All fields are required except Aadhar, PAN, and Voter ID.');
   }
 
@@ -138,8 +138,8 @@ app.post('/customers', upload.fields([
     (name, email, mobile, address, date_birth, tentative_date, preferred_date, request_date,
      customer_type, model, variant, color, ex_showroom_price, booking_amount, rm_name, srm_name,
      exchange, finance, accessories, coating, auto_card, extended_warranty, registration_fees, 
-     ccp, insurance ,rto_tax ,fast_tag)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     ccp, insurance)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const customerValues = [
@@ -147,7 +147,7 @@ app.post('/customers', upload.fields([
     customer_type, model, variant, color, ex_showroom_price, booking_amount, rm_name, srm_name,
     exchange || null, finance || null, accessories || null, coating || null, 
     auto_card || null, extended_warranty || null, registration_fees || null, ccp || null, 
-    insurance || null , rto_tax || null, fast_tag || null 
+    insurance || null
   ];
 
   try {
@@ -286,12 +286,12 @@ app.put('/customers/:id', upload.fields([
       name, email, mobile, address, date_birth, tentative_date, preferred_date, request_date,
       customer_type, model, variant, color, ex_showroom_price, booking_amount, rm_name, srm_name,
       exchange, finance, accessories, coating, auto_card, extended_warranty, registration_fees,
-      ccp, insurance ,rto_tax ,fast_tag
+      ccp, insurance
   } = req.body;
 
   if (!name || !email || !mobile || !address || !date_birth || !tentative_date || !preferred_date ||
       !request_date || !customer_type || !model || !variant || !color || !ex_showroom_price ||
-      !booking_amount || !rm_name || !srm_name || !rto_tax || !fast_tag ) {
+      !booking_amount || !rm_name || !srm_name) {
       return res.status(400).send('All required fields must be provided.');
   }
 
@@ -316,7 +316,7 @@ app.put('/customers/:id', upload.fields([
               preferred_date = ?, request_date = ?, customer_type = ?, model = ?, variant = ?, 
               color = ?, ex_showroom_price = ?, booking_amount = ?, rm_name = ?, srm_name = ?, 
               exchange = ?, finance = ?, accessories = ?, coating = ?, auto_card = ?, 
-              extended_warranty = ?, registration_fees = ?, ccp = ?, insurance = ? ,rto_tax = ?,fast_tag = ?
+              extended_warranty = ?, registration_fees = ?, ccp = ?, insurance = ?
           WHERE id = ?
       `;
 
@@ -325,7 +325,7 @@ app.put('/customers/:id', upload.fields([
           customer_type, model, variant, color, ex_showroom_price, booking_amount, rm_name, srm_name,
           exchange || null, finance || null, accessories || null, coating || null, 
           auto_card || null, extended_warranty || null, registration_fees || null, ccp || null, 
-          insurance || null, customerId , rto_tax || null, fast_tag || null, customerId
+          insurance || null, customerId
       ];
 
       await connection.query(updateCustomerSQL, customerValues);

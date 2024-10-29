@@ -40,6 +40,12 @@ const Customer = () => {
         pan: null,
         voterId: null,
       });
+
+      const [filePreviews, setFilePreviews] = useState({
+            aadhar: null,
+            pan: null,
+            voterId: null,
+          });
       
       const [show, setShow] = useState(false);
     
@@ -50,9 +56,20 @@ const Customer = () => {
       
    
       const handleFileChange = (e) => {
-        const { name, files: selectedFiles } = e.target;
-        setFiles({ ...files, [name]: selectedFiles[0] });
-      };
+            const { name, files: selectedFiles } = e.target;
+            const file = selectedFiles[0];
+        
+            if (file && file.type === 'application/pdf') {
+              // Create a URL for the selected PDF file
+              const fileURL = URL.createObjectURL(file);
+              setFilePreviews({ ...filePreviews, [name]: fileURL });
+            } else {
+              alert('Please upload a PDF file.');
+            }
+        
+            setFiles({ ...files, [name]: file });
+          };
+        
     
       const handleSubmit = async (e) => {
         e.preventDefault();
@@ -109,6 +126,7 @@ const Customer = () => {
             pan: null,
             voterId: null,
           });
+          setFilePreviews({ aadhar: null, pan: null, voterId: null });
           setShow(false); // Close modal after submission
         } catch (error) {
           console.error('Error uploading data:', error);
@@ -333,14 +351,17 @@ const Customer = () => {
                     <div className="col-md-6">
                       <p>Aadhar Card</p>
                       <input type="file" name="aadhar" className="form-control" onChange={handleFileChange} />
+                      {filePreviews.aadhar && <iframe src={filePreviews.aadhar} style={{ width: '100%', height: '200px' }} title="Aadhar Preview" />}
                     </div>
                     <div className="col-md-6">
                       <p className="mt-2">Pan Card</p>
                       <input type="file" name="pan" className="form-control" onChange={handleFileChange} />
+                      {filePreviews.pan && <iframe src={filePreviews.pan} style={{ width: '100%', height: '200px' }} title="Pan Preview" />}
                     </div>
                     <div className="col-md-6">
                       <p className="mt-2">Voter Card</p>
                       <input type="file" name="voterId" className="form-control" onChange={handleFileChange} />
+                      {filePreviews.voterId && <iframe src={filePreviews.voterId} style={{ width: '100%', height: '200px' }} title="Voter ID Preview" />}
                     </div>
                   </div>
                 </form>
@@ -357,7 +378,6 @@ const Customer = () => {
           </div>
         </div>
       )}
-
         </>
     )
 }
